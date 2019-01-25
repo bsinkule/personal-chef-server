@@ -30,7 +30,7 @@ func main() {
 	methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"})
 	origins := handlers.AllowedOrigins([]string{"*"})
 
-	dbURL := os.Getenv("DB_URL")
+	dbURL := os.Getenv("DB_URL") // comment this for local
 	db, err = gorm.Open(
 		"postgres", dbURL)
 	// "postgres", "host=localhost user=bsinkule dbname=personal-chef sslmode=disable")
