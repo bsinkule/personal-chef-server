@@ -13,5 +13,8 @@
 * go get -u github.com/kardianos/govendor
 * govendor init
 * govendor add +external
-* 
+* git add . && git commit -m "alsdjkf"
+* heroku create go-personal-chef
+* git push heroku master
+* heroku addons:create heroku-postgresql:hobby-dev
 * 

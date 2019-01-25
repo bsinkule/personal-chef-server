@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -29,10 +30,10 @@ func main() {
 	methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"})
 	origins := handlers.AllowedOrigins([]string{"*"})
 
-	// dbURL := os.Getenv("DB_URL")
+	dbURL := os.Getenv("DB_URL")
 	db, err = gorm.Open(
-		// "postgres", dbURL)
-		"postgres", "host=localhost user=bsinkule dbname=personal-chef sslmode=disable")
+		"postgres", dbURL)
+	// "postgres", "host=localhost user=bsinkule dbname=personal-chef sslmode=disable")
 
 	if err != nil {
 		panic("failed to connect database")
@@ -48,8 +49,8 @@ func main() {
 	router.HandleFunc("/images/{id}", DeleteImage).Methods("DELETE")
 	router.HandleFunc("/images/{id}", UpdateImage).Methods("PUT")
 
-	// log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), handlers.CORS(headers, methods, origins)(router)))
-	log.Fatal(http.ListenAndServe(":5000", handlers.CORS(headers, methods, origins)(router)))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), handlers.CORS(headers, methods, origins)(router)))
+	// log.Fatal(http.ListenAndServe(":5000", handlers.CORS(headers, methods, origins)(router)))
 }
 
 func GetImages(w http.ResponseWriter, r *http.Request) {
