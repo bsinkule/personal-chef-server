@@ -13,12 +13,13 @@ import (
 )
 
 type ImageAdd struct {
-	ID          uint   `json:"id"`
-	Title       string `json:"title"`
-	Description string `json:"description"`
-	ImgURL      string `json:"img_url"`
-	Dimension   string `json:"dimension"`
-	Recommended string `json:"recommended"`
+	ID          uint     `json:"id"`
+	Title       string   `json:"title"`
+	Description string   `json:"description"`
+	ImgURL      string   `json:"img_url"`
+	Dimension   string   `json:"dimension"`
+	Recommended string   `json:"recommended"`
+	ArrTest     []string `json:"arr_test"`
 }
 
 var db *gorm.DB
