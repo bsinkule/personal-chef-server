@@ -13,13 +13,13 @@ import (
 )
 
 type ImageAdd struct {
-	ID          uint     `json:"id"`
-	Title       string   `json:"title"`
-	Description string   `json:"description"`
-	ImgURL      string   `json:"img_url"`
-	Dimension   string   `json:"dimension"`
-	Recommended string   `json:"recommended"`
-	ArrTest     []string `json:"arr_test"`
+	ID          uint   `json:"id"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	ImgURL      string `json:"img_url"`
+	Orientation string `json:"orientation"`
+	Recommended string `json:"recommended"`
+	ItemType    string `json:"item_type"`
 }
 
 var db *gorm.DB
@@ -33,7 +33,7 @@ func main() {
 
 	dbURL := os.Getenv("DB_URL") // comment this for local
 	db, err = gorm.Open(
-		"postgres", dbURL)
+		"postgres", dbURL) // comment this for local
 	// "postgres", "host=localhost user=bsinkule dbname=personal-chef sslmode=disable")
 
 	if err != nil {
